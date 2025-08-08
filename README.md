@@ -75,42 +75,28 @@ Content-Type: application/json
 
 Listar todos os registros
 ```bash
-Copiar
-Editar
 GET /users
 ```
+Buscar por Id
 ```
-Buscar por ID
-bash
-Copiar
-Editar
 GET /users/{id}
 ```
-```
 Atualizar registro
-bash
-Copiar
-Editar
+```
 PUT /users/{id}
 Content-Type: application/json
-
 
 {
   "name": "João Santos",
   "email": "joaosantos@email.com"
 }
 ```
-```
 Deletar registro
-bash
-Copiar
-Editar
+```
 DELETE /users/{id}
 ```
 🧪 Rodar os testes
 ```bash
-Copiar
-Editar
 ./mvnw test
 ```
 📄 Licença
