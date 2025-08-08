@@ -1,78 +1,120 @@
-# appquarkus
+# 📚 CRUD Simples com Quarkus
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este é um projeto simples desenvolvido para **estudo e prática** com o framework [Quarkus](https://quarkus.io/).  
+O objetivo é conhecer a estrutura, configuração e funcionamento do Quarkus, explorando a criação de um **CRUD (Create, Read, Update, Delete)** básico.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+---
 
-## Running the application in dev mode
+## 🚀 Tecnologias utilizadas
 
-You can run your application in dev mode that enables live coding using:
+- **Java 17**
+- **Quarkus**
+- **Hibernate ORM** com **Panache**
+- **RESTEasy Reactive** (para criação da API REST)
+- **MySQL** 
+- **Maven**
 
-```shell script
+---
+
+## 📌 Funcionalidades
+
+- Criar novo registro
+- Listar todos os registros
+- Buscar registro por ID
+- Atualizar registro existente
+- Deletar registro
+
+---
+
+## 📂 Estrutura do Projeto
+```
+src/
+├── main/
+│ ├── java/... # Código fonte da aplicação
+│ ├── resources/
+│ │ ├── application.properties # Configurações do Quarkus
+│ │ └── META-INF/
+│ │ └── import.sql # Dados iniciais (opcional)
+└── test/
+└── java/... # Testes automatizados
+```
+
+---
+
+## ⚙️ Configuração e Execução
+
+### 1️⃣ Pré-requisitos
+- **Java 17+** instalado
+- **Maven** instalado
+- (Opcional) **Docker** se for usar banco externo
+
+---
+
+### 2️⃣ Clonar o repositório
+```bash
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
+```
+```
 ./mvnw quarkus:dev
 ```
+A aplicação ficará disponível em:
+👉 http://localhost:8080
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+4️⃣ Testar os endpoints
+Criar um novo registro
+```
+POST /users
+Content-Type: application/json
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+{
+  "name": "João Silva",
+  "email": "joao@email.com"
+}
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+Listar todos os registros
+```bash
+Copiar
+Editar
+GET /users
 ```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
 ```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+Buscar por ID
+bash
+Copiar
+Editar
+GET /users/{id}
 ```
-
-You can then execute your native executable with: `./target/appquarkus-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- REST ([guide](https://quarkus.io/guides/rest)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- JDBC Driver - MySQL ([guide](https://quarkus.io/guides/datasource)): Connect to the MySQL database via JDBC
-
-## Provided Code
-
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
+```
+Atualizar registro
+bash
+Copiar
+Editar
+PUT /users/{id}
+Content-Type: application/json
 
 
-### REST
+{
+  "name": "João Santos",
+  "email": "joaosantos@email.com"
+}
+```
+```
+Deletar registro
+bash
+Copiar
+Editar
+DELETE /users/{id}
+```
+🧪 Rodar os testes
+```bash
+Copiar
+Editar
+./mvnw test
+```
+📄 Licença
+Este projeto é apenas para fins de estudo e não possui licença específica.
 
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+💡 Observações
+Este projeto foi criado como parte dos meus estudos em Quarkus, para conhecer sua estrutura e funcionamento, com foco no desenvolvimento de APIs REST simples.
